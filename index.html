@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt=br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mequi Donauds</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Bem Vindo ao Mequi Donauds</h1>
+        
+        <section class="formulario">
+            <h3>Dados do Cliente: </h3>
+            <input type="text" id="inputNome" placeholder="Nome do Cliente">
+            <input type="number" id="inputIdade" placeholder="Idade do Cliente">
+            <input type="number" id="inputValor" placeholder="Valor Total (R$)">
+            <select id="inputCupom">
+                <option value="false">Não possui cupom</option>
+                <option value="true">Possui cupom (15% OFF)</option>
+            
+            </select>
+            
+            <button onclick="executarSistema()">Finalizar Venda</button>
+            
+            <h3>Norgets: </h3>
+            <input type="number" id="inputNorgets" placeholder="Vendeu Quantos Norgets?">
+            <select id="inputKetchup">
+                <option value="false">Não quero ketchup</option>
+                <option value="true">Quero Ketchup</option>
+            </select>
+
+            <select id="inputMostarda">
+                <option value="false">Não quero mostarda</option>
+                <option value="true">Quero mostarda</option>
+            </select>
+
+            <select id="inputMaionese">
+                <option value="false">Não quero maionese</option>
+                <option value="true">Quero maionese</option>
+            </select>
+
+        </section>
+
+    </div>
+</body>
+</html>

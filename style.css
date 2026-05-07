@@ -1,0 +1,36 @@
+body
+{
+    height: 2px;
+    color: rgb(255, 210, 11);
+    font-style: normal;
+    font-size: xx-large;
+    background-color: #2b2a2a;
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+/*
+#FFFFFF = BRANCO
+#AAAAAA = PRETO
+hexadecimal vai de A pra F e de 0 a 9
+
+/* .container     . pra class 
+{
+
+}
+
+
+
+#container    # pra id 
+{
+
+}
+
+
+name nao usa nenhum caracter
+
+*/
+
+
