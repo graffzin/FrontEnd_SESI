@@ -1,29 +1,76 @@
 body
 {
-    height: 2px;
-    color: rgb(255, 210, 11);
-    font-style: normal;
-    font-size: xx-large;
-    background-color: #2b2a2a;
+    background-color: #121212;
+    color: #FFFFFF;
     font-family: 'Segoe UI', sans-serif;
     display: flex;
     justify-content: center;
     padding: 20px;
 }
 
+.container
+{
+    width: 400px;
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #333;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+h1
+{
+    color: #00ff88;
+    text-align: center;
+}
+
+h3 
+{
+    color: #00d4ff;
+    border-bottom: 1 px solid #333;
+    padding-bottom: 5px;
+}
+
+.card
+{
+    background: #252525;
+    padding: 15px;
+    border-radius: 5px;
+    border-left: 5px solid #00ff88;
+}
+
+button
+{
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
+    background-color: #00ff88;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover 
+{
+    background-color: #00cc6e;
+}
+
+
 /*
 #FFFFFF = BRANCO
 #AAAAAA = PRETO
 hexadecimal vai de A pra F e de 0 a 9
 
-/* .container     . pra class 
+/* .container     (. pra class )
 {
 
 }
 
 
 
-#container    # pra id 
+#container   ( # pra id )
 {
 
 }

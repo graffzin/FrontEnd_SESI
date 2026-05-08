@@ -15,15 +15,28 @@
             <input type="text" id="inputNome" placeholder="Nome do Cliente">
             <input type="number" id="inputIdade" placeholder="Idade do Cliente">
             <input type="number" id="inputValor" placeholder="Valor Total (R$)">
+            
             <select id="inputCupom">
                 <option value="false">Não possui cupom</option>
                 <option value="true">Possui cupom (15% OFF)</option>
-            
             </select>
             
             <button onclick="executarSistema()">Finalizar Venda</button>
-            
-            <h3>Norgets: </h3>
+        </section>
+
+        <hr>
+
+        <section id="feedback">
+            <p id="mensagem-autorizacao">Preencha os dados acima.</p>
+            <ul id="lista-estoque"></ul>
+            <div id="relatorio-final" class="card" style="display: none;">
+            </div>
+        </section>
+    <div>
+    <script src="script.js"></script>
+    </body>
+    </html>
+            <!-- <h3>Norgets: </h3>
             <input type="number" id="inputNorgets" placeholder="Vendeu Quantos Norgets?">
             <select id="inputKetchup">
                 <option value="false">Não quero ketchup</option>
@@ -39,8 +52,8 @@
                 <option value="false">Não quero maionese</option>
                 <option value="true">Quero maionese</option>
             </select>
+            -->
 
-        </section>
 
     </div>
 </body>
