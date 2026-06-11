@@ -5,6 +5,8 @@ function executarSistema() {
         const inputIdade = document.getElementById("inputIdade");
         const inputValor = document.getElementById("inputValor");
         const inputCupom = document.getElementById("inputCupom");
+        const inputData = document.getElementById("inputData");
+        const inputHora = document.getElementById("inputHora");
 
         // Dados de saída
         const msg = document.getElementById("mensagem-autorizacao");
@@ -13,7 +15,7 @@ function executarSistema() {
 
         const btn = document.getElementById("btnFinalizar");
 
-        btn.disable = true;
+        btn.disabled = true;
         btn.innerText = "Processando...";
 
         // trim() remove os valores em branco
@@ -21,6 +23,8 @@ function executarSistema() {
         const idade = parseInt(inputIdade.value);
         const valor = parseFloat(inputValor.value);
         const cupom = inputCupom.value === "true";
+        const data = parseInt(inputData.value);
+        const hora = parseInt(inputHora.value);
 
         // Validação para campos vazios
         if (!nome || isNaN(idade) || isNaN(valor)) {
@@ -53,6 +57,7 @@ function executarSistema() {
             relatorio.innerHTML = `
             <strong> RESUMO DO PEDIDO <\strong><br>
             Cliente: ${nome} <br>
+            Data e Hora: ${hora} ${data} <br>
             Total Original: R$ ${valor.toFixed(2)} <br>
             <strong> Total com Desconto: R$ ${valorFinal.toFixed(2)} <\strong>
         `;
@@ -65,4 +70,27 @@ function executarSistema() {
     } catch (error) {
 
     }
+}
+
+function formatarMoeda() {
+    let elemento = document.getElementById('inputValor');
+    let valor = elemento.value;
+
+    // Remove tudo que não for número
+    valor = valor.replace(/\D/g, '');
+
+    // Se estiver vazio
+    if (valor === '') {
+        elemento.value = 'R$ ';
+        return;
+    }
+
+    // Converte para centavos
+    valor = (parseInt(valor) / 100).toFixed(2);
+
+    // Formata para padrão brasileiro
+    valor = valor.replace('.', ',');
+    valor = valor.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+
+    elemento.value = 'R$ ' + valor;
 }
