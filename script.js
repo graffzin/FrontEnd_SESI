@@ -1,7 +1,7 @@
 function executarSistema() {
     try {
         // Dados de entrada
-        const inputNome = document.getElementById("inputNome").value.toUpperCase();
+        const inputNome = document.getElementById("inputNome");
         const inputIdade = document.getElementById("inputIdade");
         const inputValor = document.getElementById("inputValor");
         const inputCupom = document.getElementById("inputCupom");
@@ -15,13 +15,28 @@ function executarSistema() {
 
         const btn = document.getElementById("btnFinalizar");
 
-        btn.disabled = true;
+        btn.disable = true;
         btn.innerText = "Processando...";
 
         // trim() remove os valores em branco
-        const nome = inputNome.value.trim();
+        const nome = inputNome.value.trim().toUpperCase();
+        if (/\d/.test(nome)) {
+            msg.innerText = "O nome não pode conter números.";
+            msg.style.color = "#ff4444";
+            return;
+        }
         const idade = parseInt(inputIdade.value);
-        const valor = parseFloat(inputValor.value);
+        if (idade > 150) {
+            msg.innerText = "A idade máxima permitida é 150 anos.";
+            msg.style.color = "#ff4444";
+            return;
+        }
+        const valor = parseFloat(
+            inputValor.value
+                .replace("R$ ", "")
+                .replace(/\./g, "")
+                .replace(",", ".")
+        );
         const cupom = inputCupom.value === "true";
         const data = inputData.value.trim();
         const hora = inputHora.value.trim();
@@ -94,4 +109,88 @@ function formatarMoeda() {
     valor = valor.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
 
     elemento.value = 'R$ ' + valor;
+}
+
+function formatarData() {
+    let elemento = document.getElementById("inputData");
+    let valor = elemento.value;
+
+    // Remove tudo que não for número
+    valor = valor.replace(/\D/g, "");
+
+    // Limita a 8 dígitos (ddmmaaaa)
+    valor = valor.substring(0, 8);
+
+    // Valida o dia
+    if (valor.length >= 2) {
+        let dia = parseInt(valor.substring(0, 2));
+
+        if (dia > 31) {
+            dia = 31;
+        }
+
+        valor = dia.toString().padStart(2, "0") + valor.substring(2);
+    }
+
+    // Valida o mês
+    if (valor.length >= 4) {
+        let dia = valor.substring(0, 2);
+        let mes = parseInt(valor.substring(2, 4));
+
+        if (mes > 12) {
+            mes = 12;
+        }
+
+        valor = dia + mes.toString().padStart(2, "0") + valor.substring(4);
+    }
+
+    // Formata para DD/MM/AAAA
+    if (valor.length > 4) {
+        valor = valor.replace(/(\d{2})(\d{2})(\d+)/, "$1/$2/$3");
+    } else if (valor.length > 2) {
+        valor = valor.replace(/(\d{2})(\d+)/, "$1/$2");
+    }
+
+    elemento.value = valor;
+}
+
+function formatarHora() {
+    let elemento = document.getElementById("inputHora");
+    let valor = elemento.value;
+
+    // Remove tudo que não for número
+    valor = valor.replace(/\D/g, "");
+
+    // Limita a 4 dígitos
+    valor = valor.substring(0, 4);
+
+    // Se tiver pelo menos 2 dígitos, verifica as horas
+    if (valor.length >= 2) {
+        let horas = parseInt(valor.substring(0, 2));
+
+        if (horas > 23) {
+            horas = 23;
+        }
+
+        valor = horas.toString().padStart(2, "0") + valor.substring(2);
+    }
+
+    // Se tiver 4 dígitos, verifica os minutos
+    if (valor.length === 4) {
+        let horas = valor.substring(0, 2);
+        let minutos = parseInt(valor.substring(2, 4));
+
+        if (minutos > 59) {
+            minutos = 59;
+        }
+
+        valor = horas + minutos.toString().padStart(2, "0");
+    }
+
+    // Formata para HH:MM
+    if (valor.length > 2) {
+        valor = valor.replace(/(\d{2})(\d+)/, "$1:$2");
+    }
+
+    elemento.value = valor;
 }
