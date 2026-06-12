@@ -19,10 +19,10 @@
             <input type="number" id="inputIdade" placeholder="Idade do Cliente" min="0" required>
             
             <label for="inputData">Data</label>
-            <input type="number" id="inputData" placeholder="Data da Venda" required>
+            <input type="text" id="inputData" placeholder="Data da Venda" required>
             
             <label for="inputHora">Hora</label>
-            <input type="number" id="inputHora" placeholder="Hora da Venda" required>
+            <input type="text" id="inputHora" placeholder="Hora da Venda" required>
 
             <label for="inputValor">Valor Total</label>
             <input type="text" id="inputValor" onkeyup ="formatarMoeda();" placeholder="Valor Total (R$)" min="0" step="0.01" required>
@@ -33,8 +33,6 @@
                 <option value="true">Possui cupom (15% OFF)</option>
             </select>
             
-
-
             <button id="btnFinalizar" onclick="executarSistema()">Finalizar Venda</button>
         </section>
 

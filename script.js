@@ -1,7 +1,7 @@
 function executarSistema() {
     try {
         // Dados de entrada
-        const inputNome = document.getElementById("inputNome");
+        const inputNome = document.getElementById("inputNome").value.toUpperCase();
         const inputIdade = document.getElementById("inputIdade");
         const inputValor = document.getElementById("inputValor");
         const inputCupom = document.getElementById("inputCupom");
@@ -23,8 +23,8 @@ function executarSistema() {
         const idade = parseInt(inputIdade.value);
         const valor = parseFloat(inputValor.value);
         const cupom = inputCupom.value === "true";
-        const data = parseInt(inputData.value);
-        const hora = parseInt(inputHora.value);
+        const data = inputData.value.trim();
+        const hora = inputHora.value.trim();
 
         // Validação para campos vazios
         if (!nome || isNaN(idade) || isNaN(valor)) {
@@ -57,7 +57,8 @@ function executarSistema() {
             relatorio.innerHTML = `
             <strong> RESUMO DO PEDIDO <\strong><br>
             Cliente: ${nome} <br>
-            Data e Hora: ${hora} ${data} <br>
+            Data: ${data} <br>
+            Hora: ${hora} <br>
             Total Original: R$ ${valor.toFixed(2)} <br>
             <strong> Total com Desconto: R$ ${valorFinal.toFixed(2)} <\strong>
         `;
