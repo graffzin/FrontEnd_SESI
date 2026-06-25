@@ -20,8 +20,8 @@ function executarSistema() {
 
         // trim() remove os valores em branco
         const nome = inputNome.value.trim().toUpperCase();
-        if (/\d/.test(nome)) {
-            msg.innerText = "O nome não pode conter números.";
+        if (!/^[A-Za-zÀ-ÿ\s]+$/.test(nome)) {
+            msg.innerText = "O nome deve conter apenas letras e espaços.";
             msg.style.color = "#ff4444";
             return;
         }
@@ -42,7 +42,7 @@ function executarSistema() {
         const hora = inputHora.value.trim();
 
         // Validação para campos vazios
-        if (!nome || isNaN(idade) || isNaN(valor)) {
+        if (!nome || isNaN(idade) || isNaN(valor) || !data || !hora) {
             msg.innerText = "Preencha todos os campos corretamente!";
             msg.style.color = "#ff4444";
             return;
